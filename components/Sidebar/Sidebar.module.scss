@@ -1,0 +1,54 @@
+.sidebar {
+	background-color: var(--primary);
+	padding: 10px;
+	text-align: left;
+}
+
+.image {
+	margin-bottom: 40px;
+	text-align: center;
+
+	img {
+		border-radius: 10px;
+	}
+}
+
+.link, 
+.exit {
+	list-style-type: none;
+	cursor: pointer;
+
+	& a {
+		margin: 15px 0px 15px 10px;
+		font-size: 20px;
+		font-weight: 700;
+		display: inline-flex;
+		align-items: center;
+		gap: 15px;
+		transition: all 0.3s ease 0s;
+	}
+}
+
+.link a {
+	color: var(--aqua);
+
+	&:hover {
+		color: var(--aqua-hover);
+	}
+
+	&:hover svg {
+		fill: var(--aqua-hover);
+	}
+}
+
+.exit a {
+	color: var(--red);
+
+	&:hover {
+		color: var(--red-hover);
+	}
+	
+	&:hover svg {
+		fill: var(--red-hover);
+	}
+}
