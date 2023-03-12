@@ -1,13 +1,15 @@
 import Head from 'next/head';
-import styles from '@/styles/Home.module.css';
+import styles from '@/styles/HomePage.module.scss';
 import { Post } from '@/components/Post/Post';
-import { GetStaticProps } from 'next';
+import { GetStaticProps, NextPage } from 'next';
 import axios from 'axios';
 import { PostItem } from '@/interfaces/post.interface';
+import { wrapper } from '@/redux/store';
+import { setPosts } from '@/redux/auth/post.slice';
+import React from 'react';
 //=========================================================================================================================
 
-export default function Home({ posts }: HomeProps) {
-	console.log(posts);
+const HomePage: NextPage<HomeProps> = ({ posts }) => {
 	return (
 		<>
 			<Head>
@@ -25,17 +27,30 @@ export default function Home({ posts }: HomeProps) {
 	);
 }
 
-export const getStaticProps: GetStaticProps<HomeProps> = async () => {
+export const getStaticProps: GetStaticProps<HomeProps> = wrapper.getStaticProps((store) => async () => {
+	try {
+		const { data: posts } = await axios.get<PostItem[]>('http://localhost:4444/posts');
 
-	const { data: posts } = await axios.get<PostItem[]>('http://localhost:4444/posts');
+		store.dispatch(setPosts(posts));
 
-	return {
-		props: {
-			posts
-		}
-	};
-};
+		return {
+			props: {
+				posts
+			}
+		};
+	} catch (err) {
+		console.error(err);
+		return {
+			props: {
+				posts: []
+			}
+		};
+	}
+
+});
 
 interface HomeProps {
 	posts: PostItem[];
 }
+
+export default HomePage;

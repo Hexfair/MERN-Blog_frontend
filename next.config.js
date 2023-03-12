@@ -22,6 +22,12 @@ module.exports = {
 				hostname: 'mirpozitiva.ru',
 				pathname: '**/**',
 			},
+			{
+				protocol: 'https',
+				hostname: 'localhost',
+				port: '4444',
+				pathname: '**/**',
+			},
 		],
 	},
 	distDir: 'build',

@@ -1,0 +1,21 @@
+.button {
+	margin-top: 10px;
+	margin-bottom: 40px;
+}
+
+.fileInput svg {
+	border-radius: 20px;
+}
+
+.removeImage {
+	margin-left: 30px;
+	background-color: transparent;
+	color: var(--white);
+	cursor: pointer;
+	transition: all 0.3s ease 0s;
+
+	&:hover {
+		color: var(--grey-light);
+		text-decoration: underline;
+	}
+}

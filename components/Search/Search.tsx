@@ -5,6 +5,6 @@ import { SearchProps } from "./Search.props";
 
 export const Search = ({ className, ...props }: SearchProps): JSX.Element => {
 	return (
-		<input className={styles.input} placeholder='Поиск по блогу' {...props} />
+		<input disabled className={styles.input} placeholder='Поиск по блогу' {...props} />
 	);
 };
